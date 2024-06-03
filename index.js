@@ -46,11 +46,142 @@ const transporter = nodemailer.createTransport({
 // };
 
 const mailOptions = {
-    from: "hsc92180@gmail.com",
-    to: "hsc92180@gmail.com",
+    from: "peterparker@gmail.com",
+    to: "tonystark@gmail.com",
     subject: "Sending Email using Nodemailer",
-    text: "This is a plain text email body.",
-    // html: "<h1>Welcome!</h1><p>This is an HTML email body.</p>",
+    // text: "This is a plain text email body.",
+    html: `<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Invoice</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                height: 100vh;
+                background-color: #f5f5f5;
+            }
+            .container {
+                width: 80%;
+                margin: 0 auto;
+                background-color: #ffffff;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+            .header {
+                text-align: center;
+                padding: 10px 0;
+            }
+            .header img {
+                max-width: 150px;
+            }
+            .header h1 {
+                margin: 0;
+                font-size: 24px;
+            }
+            .invoice-details {
+                margin: 20px 0;
+            }
+            .invoice-details h2 {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+            .invoice-details p {
+                margin: 5px 0;
+            }
+            .items {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 20px 0;
+            }
+            .items th, .items td {
+                border: 1px solid #dddddd;
+                padding: 8px;
+                text-align: left;
+            }
+            .items th {
+                background-color: #f2f2f2;
+            }
+            .summary {
+                text-align: right;
+                margin: 20px 0;
+            }
+            .summary p {
+                font-size: 16px;
+                margin: 5px 0;
+            }
+            .footer {
+                text-align: center;
+                margin: 20px 0;
+                font-size: 14px;
+                color: #777777;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRORx9SVFaxzU8H2buLz783n1SEJxTlgqzDYw&s" alt="Company Logo">
+                <h1>Invoice</h1>
+            </div>
+            <div class="invoice-details">
+                <h2>Invoice Details</h2>
+                <p><strong>Invoice Number:</strong> INV-123456</p>
+                <p><strong>Invoice Date:</strong> June 1, 2024</p>
+                <p><strong>Due Date:</strong> June 15, 2024</p>
+            </div>
+            <div class="billing-details">
+                <h2>Billing Details</h2>
+                <p><strong>Customer Name:</strong> John Doe</p>
+                <p><strong>Customer Email:</strong> john.doe@example.com</p>
+                <p><strong>Customer Address:</strong> 123 Main St, City, Country</p>
+            </div>
+            <table class="items">
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Quantity</th>
+                        <th>Unit Price</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Item 1</td>
+                        <td>2</td>
+                        <td>$50.00</td>
+                        <td>$100.00</td>
+                    </tr>
+                    <tr>
+                        <td>Item 2</td>
+                        <td>1</td>
+                        <td>$150.00</td>
+                        <td>$150.00</td>
+                    </tr>
+                    <tr>
+                        <td>Item 3</td>
+                        <td>3</td>
+                        <td>$30.00</td>
+                        <td>$90.00</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="summary">
+                <p><strong>Subtotal:</strong> $340.00</p>
+                <p><strong>Tax (10%):</strong> $34.00</p>
+                <p><strong>Total:</strong> $374.00</p>
+            </div>
+            <div class="footer">
+                <p>Thank you for your business!</p>
+                <p>If you have any questions about this invoice, please contact us at support@example.com</p>
+            </div>
+        </div>
+    </body>
+    </html>`,
 };
 
 transporter.sendMail(mailOptions, (error, info) => {
